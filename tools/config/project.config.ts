@@ -12,7 +12,8 @@ export class ProjectConfig extends SeedConfig {
 
   constructor() {
     super();
-    // this.APP_TITLE = 'Put name of your app here';
+    this.APP_TITLE = 'Black Scholes Option Pricer';
+    this.ENABLE_SCSS = true;
 
     /* Enable typeless compiler runs (faster) between typed compiler runs. */
     // this.TYPED_COMPILE_INTERVAL = 5;
@@ -22,6 +23,11 @@ export class ProjectConfig extends SeedConfig {
       ...this.NPM_DEPENDENCIES,
       // {src: 'jquery/dist/jquery.min.js', inject: 'libs'},
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
+      { src: 'jquery/dist/jquery.min.js', inject: 'libs' },
+      { src: 'bootstrap/dist/js/bootstrap.min.js', inject: 'libs' },
+
+      { src: 'bootstrap/dist/css/bootstrap.min.css', inject: true, vendor: true },
+      { src: 'bootstrap/dist/css/bootstrap-theme.min.css', inject: true, vendor: true }
     ];
 
     // Add `local` third-party libraries to be injected/bundled.
@@ -33,6 +39,11 @@ export class ProjectConfig extends SeedConfig {
 
     /* Add to or override NPM module configurations: */
     // this.mergeObject(this.PLUGIN_CONFIGS['browser-sync'], { ghostMode: false });
+    this.SYSTEM_CONFIG_DEV.paths['ng2-completer'] = 'node_modules/ng2-completer/bundles/ng2-completer.js';
+    this.SYSTEM_CONFIG_DEV.packages['ng2-completer'] = { format: 'cjs' };
+
+    this.SYSTEM_BUILDER_CONFIG.packages['ng2-completer'] = { format: 'cjs', main: 'bundles/ng2-completer.js' };
+    this.SYSTEM_BUILDER_CONFIG.packages['moment'] = { format: 'cjs', main: 'moment.js' };
   }
 
 }

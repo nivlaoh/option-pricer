@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { NameListService } from '../shared/index';
 
 /**
@@ -8,9 +9,8 @@ import { NameListService } from '../shared/index';
   moduleId: module.id,
   selector: 'sd-home',
   templateUrl: 'home.component.html',
-  styleUrls: ['home.component.css'],
+  styleUrls: ['home.component.css']
 })
-
 export class HomeComponent implements OnInit {
 
   newName: string = '';
@@ -37,10 +37,10 @@ export class HomeComponent implements OnInit {
    */
   getNames() {
     this.nameListService.get()
-		     .subscribe(
-		       names => this.names = names,
-		       error =>  this.errorMessage = <any>error
-		       );
+                     .subscribe(
+                       names => this.names = names,
+                       error =>  this.errorMessage = <any>error
+                       );
   }
 
   /**
